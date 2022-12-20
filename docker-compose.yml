@@ -1,7 +1,8 @@
 services:
   bind9:
     container_name: bind9
-    image: internetsystemsconsortium/bind9:9.19
+#    image: internetsystemsconsortium/bind9:9.19 # OS/ARCH=linux/amd64
+    image: psazevedo/bind9:9.19 # linux/arm64/v8 built with raspberry pi 4
     expose:
       - "53:53/udp"
       - "53:53/tcp"
@@ -12,3 +13,5 @@ services:
       - "./data/zones:/var/lib/bind"    # secondary zones
       - "./data/logs:/var/log"          # Logs
     privileged: false
+    platform: linux/amd64
+    user: 
